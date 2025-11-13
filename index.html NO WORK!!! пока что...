@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Список студентов</title>
+    <title>The Longest Night</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -14,22 +14,22 @@
                 {% for student in students %}
                     <div class="student-item">
                         <span class="">{{ loop.index }}</span>
-                        <span class="">{{ student }}</span>
+                        <span class="">{{  }}</span>
                     </div>
                 {% endfor %}
             </div>
         {% else %}
-            <p class="no-students">Студенты не найдены</p>
+            <p class="no-students"></p>
         {% endif %}
 
         <div class="footer">
-            <p>Всего студентов: {{ students|length }}</p>
+            <p> {{}}</p>
         </div>
     </div>
        <div class="navigation">
-            <a href="{{ url_for('index') }}" class="btn">← Назад к списку</a>
-            <a href="{{ url_for('add_student') }}" class="btn"> Добавить студента</a>
-           <a href="{{ url_for('del_student') }}" class="btn"> Удалить студента</a>
+            <a href="{{ url_for('index') }}" class="btn">Наш Discord</a>
+            <a href="{{ url_for('add_student') }}" class="btn">YouTube</a>
+           <a href="{{ url_for('del_student') }}" class="btn">Магазин</a>
     </div>
 </body>
 </html>
