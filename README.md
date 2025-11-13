@@ -1,2 +1,2 @@
 # Python-Site-TLN Проект 
-Site Server DayZ
+Задание по предмету разработка # web-приложения
