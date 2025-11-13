@@ -27,9 +27,9 @@
         </div>
     </div>
        <div class="navigation">
-            <a href="{{ url_for('index') }}" class="btn">Наш Discord</a>
-            <a href="{{ url_for('add_student') }}" class="btn">YouTube</a>
-           <a href="{{ url_for('del_student') }}" class="btn">Магазин</a>
+            <a href="{{ url_for('Discord') }}" class="btn">Наш Discord</a>
+            <a href="{{ url_for('YouTube') }}" class="btn">YouTube</a>
+           <a href="{{ url_for('Magazine') }}" class="btn">Магазин</a>
     </div>
 </body>
 </html>
