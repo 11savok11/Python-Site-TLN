@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return "Привет"
+    return "The Longest Night"
 
 
 
