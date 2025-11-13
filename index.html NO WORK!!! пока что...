@@ -9,21 +9,10 @@
 <body>
     <div class="container">
         <h1>The Longrest Night</h1>
-        {% if students %}
-            <div class="students-list">
-                {% for student in students %}
-                    <div class="student-item">
-                        <span class="">{{ loop.index }}</span>
-                        <span class="">{{  }}</span>
-                    </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            <p class="no-students"></p>
-        {% endif %}
+
 
         <div class="footer">
-            <p> {{}}</p>
+            <p>Админ Чмо!</p>
         </div>
     </div>
        <div class="navigation">
