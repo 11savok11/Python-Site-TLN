@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Longest Night</title>
     <style>
-        /* Основные стили */
         * {
             margin: 0;
             padding: 0;
@@ -18,9 +17,8 @@
             color: #333;
         }
         
-        /* Шапка сайта */
         header {
-            background-color: #c41e3a;
+            background-color: #000000;
             padding: 15px 0;
             position: sticky;
             top: 0;
@@ -44,7 +42,7 @@
         
         .logo h1 {
             color: #ffffff;
-            font-size: 28px;
+            font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 1px;
             text-shadow: 2px 2px 0 #000;
@@ -72,10 +70,6 @@
             transition: color 0.3s;
         }
         
-        nav ul li a:hover {
-            color: #ffcc00;
-        }
-        
         .user-actions {
             display: flex;
             gap: 15px;
@@ -93,7 +87,7 @@
             width: 35px;
             height: 35px;
             border-radius: 50%;
-            background-color: #ffcc00;
+            background-color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -102,7 +96,7 @@
         }
         
         .banner {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('');
             background-size: cover;
             background-position: center;
             height: 500px;
@@ -129,7 +123,7 @@
         
         .btn {
             background-color: #ffffff;
-            color: #c41e3a;
+            color: #000000;
             padding: 12px 30px;
             border: none;
             border-radius: 30px;
@@ -142,14 +136,14 @@
         }
         
         .btn:hover {
-            background-color: #ffd633;
+            background-color: #ffffff;
             transform: scale(1.05);
         }
         
         .btn-secondary {
             background-color: transparent;
-            color: #ffcc00;
-            border: 2px solid #ffcc00;
+            color: #ffffff;
+            border: 2px solid #ffffff;
         }
         
         .btn-secondary:hover {
@@ -170,7 +164,7 @@
         .section-title {
             text-align: center;
             margin-bottom: 40px;
-            color: #c41e3a;
+            color: #000000;
             font-size: 36px;
         }
         
@@ -204,7 +198,7 @@
         }
         
         .menu-item h3 {
-            color: #c41e3a;
+            color: #000000;
             margin-bottom: 10px;
             font-size: 20px;
         }
@@ -224,10 +218,9 @@
         .price span {
             font-weight: bold;
             font-size: 18px;
-            color: #c41e3a;
+            color: #000000;
         }
         
-        /* Секция о нас */
         .about {
             background-color: #f8f8f8;
             padding: 80px 0;
@@ -257,7 +250,7 @@
         }
         
         .about-content h2 {
-            color: #c41e3a;
+            color: #000000;
             margin-bottom: 20px;
             font-size: 36px;
         }
@@ -274,7 +267,7 @@
         }
         
         .promo h2 {
-            color: #c41e3a;
+            color: #000000;
             margin-bottom: 30px;
             font-size: 36px;
         }
@@ -296,7 +289,7 @@
         }
         
         .promo-item h3 {
-            color: #c41e3a;
+            color: #000000;
             margin-bottom: 15px;
         }
         
@@ -341,7 +334,7 @@
         }
         
         .cart-item-details h4 {
-            color: #c41e3a;
+            color: #000000;
             margin-bottom: 5px;
         }
         
@@ -412,7 +405,7 @@
         }
         
         .footer-column h3 {
-            color: #ffcc00;
+            color: #ffffff;
             margin-bottom: 20px;
             font-size: 20px;
         }
@@ -432,7 +425,7 @@
         }
         
         .footer-column ul li a:hover {
-            color: #ffcc00;
+            color: #ffffff;
         }
         
         .social-links {
@@ -455,7 +448,7 @@
         }
         
         .social-links a:hover {
-            background-color: #c41e3a;
+            background-color: #000000;
         }
         
         .copyright {
@@ -502,11 +495,11 @@
         }
         
         .close-modal:hover {
-            color: #c41e3a;
+            color: #000000;
         }
         
         .modal h2 {
-            color: #c41e3a;
+            color: #000000;
             margin-bottom: 20px;
             text-align: center;
         }
@@ -531,7 +524,7 @@
         }
         
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            border-color: #c41e3a;
+            border-color: #000000;
             outline: none;
         }
         
@@ -548,7 +541,7 @@
         }
         
         .form-switch a {
-            color: #c41e3a;
+            color: #000000;
             text-decoration: none;
             font-weight: bold;
         }
@@ -639,14 +632,15 @@
     <header>
         <div class="header-container">
             <div class="logo">
-                <h1>USA <span>BURGERS</span></h1>
+                <h1><span>The Longest Night</span></h1>
             </div>
             <nav>
                 <ul>
                     <li><a href="#menu">Донат</a></li>
                     <li><a href="#about">О нас</a></li>
                     <li><a href="#promo">Промокоды</a></li>
-                    <li><a href="#contacts"></a></li>
+                    <li><a href="#youtube">Наш Youtube Канал</a></li>
+                    <li><a href="#discord">Наш Discord Сервер</a></li>
                     <li class="user-actions">
                         <div id="user-info" class="user-info" style="display: none;">
                             <div class="user-avatar" id="user-avatar">U</div>
@@ -662,16 +656,14 @@
         </div>
     </header>
 
-    <!-- Баннер -->
     <section class="banner">
         <h2>The Longest Night</h2>
         <p>Вас тут изнасилуют</p>
         <a href="#menu" class="btn">Магазин</a>
     </section>
 
-    <!-- Меню -->
     <section class="menu-section" id="menu">
-        <h2 class="section-title">Наше меню</h2>
+        <h2 class="section-title">Магазин</h2>
         <div class="menu-grid">
             <div class="menu-item">
                 <img src="" alt="Кейс С Оружием">
@@ -679,7 +671,7 @@
                     <h3>Кейс 1</h3>
                     <p>Оружие</p>
                     <div class="price">
-                        <span>100 руб.</span>
+                        <span>100₽</span>
                         <button class="btn add-to-cart" data-id="1" data-name="Оружие" data-price="100" data-image="">В корзину</button>
                     </div>
                 </div>
@@ -691,7 +683,7 @@
                     <h3>Кейс 2</h3>
                     <p>Тут Нюдсы Админа</p>
                     <div class="price">
-                        <span>100 руб.</span>
+                        <span>100₽</span>
                         <button class="btn add-to-cart" data-id="2" data-name="Броня" data-price="100" data-image="">В корзину</button>
                     </div>
                 </div>
@@ -703,26 +695,20 @@
                     <h3>Кейс 3</h3>
                     <p>Тут Нюдсы Савка</p>
                     <div class="price">
-                        <span>1000 руб.</span>
+                        <span>100₽</span>
                         <button class="btn add-to-cart" data-id="3" data-name="Хлам" data-price="100" data-image="">В корзину</button>
                     </div>
                 </div>
             </div>
 
-    <!-- Корзина -->
     <section class="cart-section" id="cart">
         <h2 class="section-title">Ваша корзина</h2>
         <div class="cart-items" id="cart-items">
-            <!-- Товары будут добавляться сюда динамически -->
         </div>
         <div class="cart-summary">
             <div class="summary-row">
                 <span>Сумма заказа:</span>
                 <span id="cart-subtotal">0 руб.</span>
-            </div>
-            <div class="summary-row">
-                <span>Доставка:</span>
-                <span id="delivery-cost">0 руб.</span>
             </div>
             <div class="summary-row summary-total">
                 <span>Итого:</span>
@@ -732,57 +718,29 @@
         </div>
     </section>
 
-    <!-- О нас -->
-    <section class="about" id="about">
-        <div class="about-container">
-            <div class="about-image">
-                <img src="" alt="Интерьер ресторана">
             </div>
             <div class="about-content">
                 <h2>О Нашем Сервере</h2>
                 <p>The Longest Night - это сеть Dayz серверов где админ издевается над игроками.</p>
                 <p>Наш админ заботится о том чтобы игроки умирали и мучались.</p>
                 <p>Наша миссия - сделать максимальную жопа боль и джага-джага.</p>
-                <a href="#" class="btn">Узнать больше</a>
+                <a href="#" class="btn" target="_blank">Узнать больше</a>
             </div>
         </div>
     </section>
 
-    <!-- Акции -->
-    <section class="promo" id="promo">
-        <h2>Специальные предложения</h2>
-        <div class="promo-grid">
-            <div class="promo-item">
-                <h3>Секс с фембоями сервера</h3>
-                <p>Савок, Рома и Ваня за 1500 руб.</p>
-                <a href="#" class="btn">Попробовать</a>
-            </div>
-        </div>
-    </section>
 
-    <!-- Подвал -->
     <footer id="contacts">
         <div class="footer-container">
             <div class="footer-column">
                 <h3>The Longest Night</h3>
                 <p>Здесь тебя и похоронят, сучка</p>
-                <div class="social-links">
-                    <a href="#">YouTube</a>
-                    <a href="#">Discord</a>
                 </div>
             </div>
             <div class="footer-column">
                 <h3>Контакты</h3>
                 <ul>
                     <li>DemmonikPetux@.ru</li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Часы работы</h3>
-                <ul>
-                    <li>Пн-Чт: 10:00 - 23:00</li>
-                    <li>Пт-Сб: 10:00 - 00:00</li>
-                    <li>Вс: 11:00 - 22:00</li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -799,7 +757,6 @@
         </div>
     </footer>
 
-    <!-- Модальное окно регистрации/входа -->
     <div id="auth-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -853,7 +810,6 @@
         </div>
     </div>
 
-    <!-- Модальное окно оформления заказа -->
     <div id="order-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -874,7 +830,6 @@
         </div>
     </div>
 
-    <!-- Модальное окно профиля -->
     <div id="profile-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -886,14 +841,13 @@
             <div class="order-history">
                 <h3>История покупок</h3>
                 <div id="order-history-list">
-                    <!-- Заказы будут добавляться сюда динамически -->
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Элементы DOM
+
         const authModal = document.getElementById('auth-modal');
         const orderModal = document.getElementById('order-modal');
         const profileModal = document.getElementById('profile-modal');
@@ -989,7 +943,6 @@
             }
         });
 
-        // Обработка формы регистрации
         registerFormElement.addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -999,10 +952,8 @@
             const phone = document.getElementById('register-phone').value;
             const address = document.getElementById('register-address').value;
             
-            // Получаем пользователей из localStorage
             const users = JSON.parse(localStorage.getItem('users')) || [];
-            
-            // Проверяем, не зарегистрирован ли уже пользователь с таким email
+
             if (users.find(u => u.email === email)) {
                 alert('Пользователь с таким email уже зарегистрирован!');
                 return;
@@ -1146,10 +1097,6 @@
                 cartItems.appendChild(cartItem);
             });
             
-
-            const delivery = subtotal >= 1000 ? 0 : 200;
-            const total = subtotal + delivery;
-            
             cartSubtotal.textContent = `${subtotal} руб.`;
             deliveryCost.textContent = `${delivery} руб.`;
             cartTotal.textContent = `${total} руб.`;
@@ -1189,13 +1136,11 @@
             });
         }
 
-        // Открытие корзины
         cartBtn.addEventListener('click', function() {
             cartSection.style.display = 'block';
             document.querySelector('#menu').scrollIntoView({ behavior: 'smooth' });
         });
 
-        // Оформление заказа
         checkoutBtn.addEventListener('click', function() {
             const currentUser = JSON.parse(localStorage.getItem('currentUser'));
             
@@ -1209,15 +1154,13 @@
                 alert('Ваша корзина пуста!');
                 return;
             }
-            
-            // Заполняем форму заказа данными пользователя
+
             document.getElementById('order-address').value = currentUser.address || '';
             document.getElementById('order-phone').value = currentUser.phone || '';
             
             orderModal.style.display = 'flex';
         });
 
-        // Обработка формы заказа
         orderForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
