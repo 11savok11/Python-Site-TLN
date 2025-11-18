@@ -3,112 +3,1287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магазин</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>The Longest Night</title>
     <style>
-        .form-container {
-            max-width: 600px;
+        /* Основные стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        /* Шапка сайта */
+        header {
+            background-color: #c41e3a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
             margin: 0 auto;
-            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: #ffffff;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 0 #000;
+        }
+        
+        .logo span {
+            color: #fff;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+        
+        .user-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .user-info {
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #ffcc00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000000;
+            font-weight: bold;
+        }
+        
+        .banner {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        
+        .banner h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .banner p {
+            font-size: 20px;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            background-color: #ffffff;
+            color: #c41e3a;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background-color: #ffd633;
+            transform: scale(1.05);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: #ffcc00;
+            border: 2px solid #ffcc00;
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 204, 0, 0.1);
+        }
+        
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+        
+        .menu-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #c41e3a;
+            font-size: 36px;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .menu-item-content {
+            padding: 20px;
+        }
+        
+        .menu-item h3 {
+            color: #c41e3a;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .menu-item p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+        
+        .price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price span {
+            font-weight: bold;
+            font-size: 18px;
+            color: #c41e3a;
+        }
+        
+        /* Секция о нас */
+        .about {
+            background-color: #f8f8f8;
+            padding: 80px 0;
+        }
+        
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-content h2 {
+            color: #c41e3a;
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+        
+        .about-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .promo {
+            background-color: #ffcc00;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .promo h2 {
+            color: #c41e3a;
+            margin-bottom: 30px;
+            font-size: 36px;
+        }
+        
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .promo-item {
+            background-color: white;
             padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .promo-item h3 {
+            color: #c41e3a;
+            margin-bottom: 15px;
+        }
+        
+        .cart-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            display: none;
+        }
+        
+        .cart-items {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        
+        .cart-item-details h4 {
+            color: #c41e3a;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .quantity-btn:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .cart-summary {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .summary-total {
+            font-weight: bold;
+            font-size: 18px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        
+        /* Подвал */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column h3 {
+            color: #ffcc00;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #ffcc00;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #c41e3a;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 14px;
         }
 
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #888;
+        }
+        
+        .close-modal:hover {
+            color: #c41e3a;
+        }
+        
+        .modal h2 {
+            color: #c41e3a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
         .form-group {
             margin-bottom: 20px;
         }
-
-        .form-label {
+        
+        .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 600;
-            color: #333;
+            font-weight: bold;
+            color: #555;
         }
-
-        .form-input {
+        
+        .form-group input, .form-group textarea, .form-group select {
             width: 100%;
             padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
             font-size: 16px;
-            transition: border-color 0.3s ease;
         }
-
-        .form-input:focus {
+        
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: #c41e3a;
             outline: none;
-            border-color: #4facfe;
-            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
         }
-
-        .btn-submit {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease;
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
         }
-
-        .btn-submit:hover {
-            transform: translateY(-2px);
+        
+        .form-switch {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
         }
-
-        .message {
+        
+        .form-switch a {
+            color: #c41e3a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .form-switch a:hover {
+            text-decoration: underline;
+        }
+        
+        .user-profile {
+            display: none;
+        }
+        
+        .profile-info {
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .profile-info p {
+            margin-bottom: 10px;
+        }
+        
+        .order-history {
+            margin-top: 30px;
+        }
+        
+        .order-item {
+            background-color: #f8f8f8;
             padding: 15px;
             border-radius: 8px;
-            margin: 20px 0;
-            text-align: center;
+            margin-bottom: 15px;
         }
-
-        .message-success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
         }
-
-        .message-error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+        
+        .order-details {
+            color: #666;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .banner h2 {
+                font-size: 36px;
+            }
+            
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .form-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .form-actions button {
+                width: 100%;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .cart-item-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>➕Пополнить Счёт</h1>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>USA <span>BURGERS</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#menu">Донат</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#promo">Промокоды</a></li>
+                    <li><a href="#contacts"></a></li>
+                    <li class="user-actions">
+                        <div id="user-info" class="user-info" style="display: none;">
+                            <div class="user-avatar" id="user-avatar">U</div>
+                            <span id="username">Пользователь</span>
+                            <button id="profile-btn" class="btn btn-secondary btn-small">Профиль</button>
+                            <button id="logout-btn" class="btn btn-secondary btn-small">Выйти</button>
+                        </div>
+                        <button id="login-btn" class="btn btn-secondary">Войти</button>
+                        <button id="cart-btn" class="btn">Корзина (<span id="cart-count">0</span>)</button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-        <div class="form-container">
-            {% if message %}
-                <div class="message message-{{ message_type }}">
-                    {{ message }}
+    <!-- Баннер -->
+    <section class="banner">
+        <h2>The Longest Night</h2>
+        <p>Вас тут изнасилуют</p>
+        <a href="#menu" class="btn">Магазин</a>
+    </section>
+
+    <!-- Меню -->
+    <section class="menu-section" id="menu">
+        <h2 class="section-title">Наше меню</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="" alt="Кейс С Оружием">
+                <div class="menu-item-content">
+                    <h3>Кейс 1</h3>
+                    <p>Оружие</p>
+                    <div class="price">
+                        <span>100 руб.</span>
+                        <button class="btn add-to-cart" data-id="1" data-name="Оружие" data-price="100" data-image="">В корзину</button>
+                    </div>
                 </div>
-            {% endif %}
+            </div>
+            
+            <div class="menu-item">
+                <img src="" alt="Кейс С Броней">
+                <div class="menu-item-content">
+                    <h3>Кейс 2</h3>
+                    <p>Тут Нюдсы Админа</p>
+                    <div class="price">
+                        <span>100 руб.</span>
+                        <button class="btn add-to-cart" data-id="2" data-name="Броня" data-price="100" data-image="">В корзину</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="menu-item">
+                <img src="" alt="Кейс С Хламом">
+                <div class="menu-item-content">
+                    <h3>Кейс 3</h3>
+                    <p>Тут Нюдсы Савка</p>
+                    <div class="price">
+                        <span>1000 руб.</span>
+                        <button class="btn add-to-cart" data-id="3" data-name="Хлам" data-price="100" data-image="">В корзину</button>
+                    </div>
+                </div>
+            </div>
 
-            <form method="POST">
+    <!-- Корзина -->
+    <section class="cart-section" id="cart">
+        <h2 class="section-title">Ваша корзина</h2>
+        <div class="cart-items" id="cart-items">
+            <!-- Товары будут добавляться сюда динамически -->
+        </div>
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Сумма заказа:</span>
+                <span id="cart-subtotal">0 руб.</span>
+            </div>
+            <div class="summary-row">
+                <span>Доставка:</span>
+                <span id="delivery-cost">0 руб.</span>
+            </div>
+            <div class="summary-row summary-total">
+                <span>Итого:</span>
+                <span id="cart-total">0 руб.</span>
+            </div>
+            <button id="checkout-btn" class="btn" style="width: 100%; margin-top: 20px;">Оформить заказ</button>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="" alt="Интерьер ресторана">
+            </div>
+            <div class="about-content">
+                <h2>О Нашем Сервере</h2>
+                <p>The Longest Night - это сеть Dayz серверов где админ издевается над игроками.</p>
+                <p>Наш админ заботится о том чтобы игроки умирали и мучались.</p>
+                <p>Наша миссия - сделать максимальную жопа боль и джага-джага.</p>
+                <a href="#" class="btn">Узнать больше</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Акции -->
+    <section class="promo" id="promo">
+        <h2>Специальные предложения</h2>
+        <div class="promo-grid">
+            <div class="promo-item">
+                <h3>Секс с фембоями сервера</h3>
+                <p>Савок, Рома и Ваня за 1500 руб.</p>
+                <a href="#" class="btn">Попробовать</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer id="contacts">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>The Longest Night</h3>
+                <p>Здесь тебя и похоронят, сучка</p>
+                <div class="social-links">
+                    <a href="#">YouTube</a>
+                    <a href="#">Discord</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>DemmonikPetux@.ru</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Часы работы</h3>
+                <ul>
+                    <li>Пн-Чт: 10:00 - 23:00</li>
+                    <li>Пт-Сб: 10:00 - 00:00</li>
+                    <li>Вс: 11:00 - 22:00</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Быстрые ссылки</h3>
+                <ul>
+                    <li><a href="#menu">Меню</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#cart">Корзина</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy;Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- Модальное окно регистрации/входа -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="login-form">
+                <h2>Вход в аккаунт</h2>
+                <form id="login-form-element">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Пароль</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn">Войти</button>
+                        <button type="button" class="btn btn-secondary" id="switch-to-register">Регистрация</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="register-form" style="display: none;">
+                <h2>Регистрация</h2>
+                <form id="register-form-element">
+                    <div class="form-group">
+                        <label for="register-name">Имя</label>
+                        <input type="text" id="register-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Пароль</label>
+                        <input type="password" id="register-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-phone">Телефон</label>
+                        <input type="tel" id="register-phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-address">Адрес</label>
+                        <textarea id="register-address" rows="3"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn">Зарегистрироваться</button>
+                        <button type="button" class="btn btn-secondary" id="switch-to-login">Войти</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно оформления заказа -->
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Оформление заказа</h2>
                 <div class="form-group">
-                    <label class="form-label" for="student_name">:</label>
-                    <input type="text"
-                           id="student_name"
-                           name="student_name"
-                           class="form-input"
-                           placeholder="АААА"
-                           required
-                           maxlength="100">
+                    <label for="order-payment">Способ оплаты</label>
+                    <select id="order-payment" required>
+                        <option value="">Выберите способ оплаты</option>
+                        <option value="cash">Картой</option>
+                        <option value="cash">СБП</option>
+                        <option value="cash">Нюдсами Савка</option>
+                    </select>
                 </div>
-
-                <button type="submit" class="btn-submit">
-                    📝 
-                </button>
+                <div class="form-actions">
+                    <button type="submit" class="btn">Подтвердить заказ</button>
+                </div>
             </form>
         </div>
-
-        <div class="navigation">
-            <a href="{{ url_for('index') }}" class="btn">← Назад</a>
-            <a href="{{ url_for('add_student') }}" class="btn"> Промокоды</a>
     </div>
+
+    <!-- Модальное окно профиля -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Ваш профиль</h2>
+            <div class="profile-info">
+                <p><strong>1:</strong> <span id="profile-name"></span></p>
+            </div>
+            
+            <div class="order-history">
+                <h3>История покупок</h3>
+                <div id="order-history-list">
+                    <!-- Заказы будут добавляться сюда динамически -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Элементы DOM
+        const authModal = document.getElementById('auth-modal');
+        const orderModal = document.getElementById('order-modal');
+        const profileModal = document.getElementById('profile-modal');
+        const loginBtn = document.getElementById('login-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const profileBtn = document.getElementById('profile-btn');
+        const cartBtn = document.getElementById('cart-btn');
+        const closeModal = document.querySelectorAll('.close-modal');
+        const switchToRegister = document.getElementById('switch-to-register');
+        const switchToLogin = document.getElementById('switch-to-login');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const loginFormElement = document.getElementById('login-form-element');
+        const registerFormElement = document.getElementById('register-form-element');
+        const orderForm = document.getElementById('order-form');
+        const userInfo = document.getElementById('user-info');
+        const usernameSpan = document.getElementById('username');
+        const userAvatar = document.getElementById('user-avatar');
+        const cartCount = document.getElementById('cart-count');
+        const cartSection = document.getElementById('cart');
+        const cartItems = document.getElementById('cart-items');
+        const cartSubtotal = document.getElementById('cart-subtotal');
+        const cartTotal = document.getElementById('cart-total');
+        const deliveryCost = document.getElementById('delivery-cost');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const profileName = document.getElementById('profile-name');
+        const profileEmail = document.getElementById('profile-email');
+        const profilePhone = document.getElementById('profile-phone');
+        const profileAddress = document.getElementById('profile-address');
+        const profileRegdate = document.getElementById('profile-regdate');
+        const orderHistoryList = document.getElementById('order-history-list');
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser) {
+                showUserInfo(currentUser);
+            }
+            updateCart();
+        });
+
+        loginBtn.addEventListener('click', function() {
+            authModal.style.display = 'flex';
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+        });
+
+        profileBtn.addEventListener('click', function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser) {
+                showProfileInfo(currentUser);
+                profileModal.style.display = 'flex';
+            }
+        });
+
+        closeModal.forEach(closeBtn => {
+            closeBtn.addEventListener('click', function() {
+                authModal.style.display = 'none';
+                orderModal.style.display = 'none';
+                profileModal.style.display = 'none';
+            });
+        });
+
+        switchToRegister.addEventListener('click', function() {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+        });
+
+        switchToLogin.addEventListener('click', function() {
+            registerForm.style.display = 'none';
+            loginForm.style.display = 'block';
+        });
+
+        loginFormElement.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                showUserInfo(user);
+                authModal.style.display = 'none';
+                alert('Вы успешно вошли в систему!');
+            } else {
+                alert('Неверные данные');
+            }
+        });
+
+        // Обработка формы регистрации
+        registerFormElement.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const phone = document.getElementById('register-phone').value;
+            const address = document.getElementById('register-address').value;
+            
+            // Получаем пользователей из localStorage
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            // Проверяем, не зарегистрирован ли уже пользователь с таким email
+            if (users.find(u => u.email === email)) {
+                alert('Пользователь с таким email уже зарегистрирован!');
+                return;
+            }
+
+            const newUser = {
+                id: Date.now(),
+                name,
+                email,
+                password,
+                phone,
+                address,
+                registrationDate: new Date().toLocaleDateString(),
+                orders: []
+            };
+
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+
+            localStorage.setItem('currentUser', JSON.stringify(newUser));
+            showUserInfo(newUser);
+            authModal.style.display = 'none';
+            alert('Регистрация прошла успешно!');
+        });
+
+        logoutBtn.addEventListener('click', function() {
+            localStorage.removeItem('currentUser');
+            userInfo.style.display = 'none';
+            loginBtn.style.display = 'inline-block';
+            alert('Вы вышли из системы!');
+        });
+
+        function showUserInfo(user) {
+            usernameSpan.textContent = user.name;
+            userAvatar.textContent = user.name.charAt(0).toUpperCase();
+            userInfo.style.display = 'flex';
+            loginBtn.style.display = 'none';
+        }
+
+        function showProfileInfo(user) {
+            profileName.textContent = user.name;
+            profileEmail.textContent = user.email;
+            profilePhone.textContent = user.phone || 'Не указан';
+            profileAddress.textContent = user.address || 'Не указан';
+            profileRegdate.textContent = user.registrationDate;
+
+            orderHistoryList.innerHTML = '';
+            if (user.orders && user.orders.length > 0) {
+                user.orders.forEach(order => {
+                    const orderItem = document.createElement('div');
+                    orderItem.className = 'order-item';
+                    orderItem.innerHTML = `
+                        <div class="order-header">
+                            <strong>Заказ #${order.id}</strong>
+                            <span>${order.date}</span>
+                        </div>
+                        <div class="order-details">
+                            <p>${order.items.map(item => `${item.name} (${item.quantity} шт.)`).join(', ')}</p>
+                            <p><strong>Итого: ${order.total} руб.</strong></p>
+                            <p>Статус: ${order.status}</p>
+                        </div>
+                    `;
+                    orderHistoryList.appendChild(orderItem);
+                });
+            } else {
+                orderHistoryList.innerHTML = '<p>У вас пока нет заказов</p>';
+            }
+        }
+
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const id = this.getAttribute('data-id');
+                const name = this.getAttribute('data-name');
+                const price = parseInt(this.getAttribute('data-price'));
+                const image = this.getAttribute('data-image');
+
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        image,
+                        quantity: 1
+                    });
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                updateCart();
+
+                alert(`"${name}" добавлен в корзину!`);
+            });
+        });
+
+
+        function updateCart() {
+
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Ваша корзина пуста</p>';
+                cartSubtotal.textContent = '0 руб.';
+                cartTotal.textContent = '0 руб.';
+                deliveryCost.textContent = '0 руб.';
+                return;
+            }
+            
+            let subtotal = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-info">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p>${item.price} руб.</p>
+                        </div>
+                    </div>
+                    <div class="cart-item-controls">
+                        <div class="quantity-control">
+                            <button class="quantity-btn decrease-quantity" data-id="${item.id}">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn increase-quantity" data-id="${item.id}">+</button>
+                        </div>
+                        <span class="item-total">${itemTotal} руб.</span>
+                        <button class="btn btn-secondary btn-small remove-item" data-id="${item.id}">Удалить</button>
+                    </div>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+            
+
+            const delivery = subtotal >= 1000 ? 0 : 200;
+            const total = subtotal + delivery;
+            
+            cartSubtotal.textContent = `${subtotal} руб.`;
+            deliveryCost.textContent = `${delivery} руб.`;
+            cartTotal.textContent = `${total} руб.`;
+            
+
+            document.querySelectorAll('.increase-quantity').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    if (item) {
+                        item.quantity += 1;
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        updateCart();
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.decrease-quantity').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const item = cart.find(item => item.id === id);
+                    if (item && item.quantity > 1) {
+                        item.quantity -= 1;
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        updateCart();
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    cart = cart.filter(item => item.id !== id);
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCart();
+                });
+            });
+        }
+
+        // Открытие корзины
+        cartBtn.addEventListener('click', function() {
+            cartSection.style.display = 'block';
+            document.querySelector('#menu').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Оформление заказа
+        checkoutBtn.addEventListener('click', function() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            if (!currentUser) {
+                alert('Для оформления заказа необходимо войти в систему!');
+                authModal.style.display = 'flex';
+                return;
+            }
+            
+            if (cart.length === 0) {
+                alert('Ваша корзина пуста!');
+                return;
+            }
+            
+            // Заполняем форму заказа данными пользователя
+            document.getElementById('order-address').value = currentUser.address || '';
+            document.getElementById('order-phone').value = currentUser.phone || '';
+            
+            orderModal.style.display = 'flex';
+        });
+
+        // Обработка формы заказа
+        orderForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                alert('Ошибка: пользователь не авторизован!');
+                return;
+            }
+            
+            const address = document.getElementById('order-address').value;
+            const phone = document.getElementById('order-phone').value;
+            const comment = document.getElementById('order-comment').value;
+            const payment = document.getElementById('order-payment').value;
+            
+            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+            const delivery = subtotal >= 1000 ? 0 : 200;
+            const total = subtotal + delivery;
+            
+            const order = {
+                id: Date.now(),
+                date: new Date().toLocaleString(),
+                items: [...cart],
+                address,
+                phone,
+                comment,
+                payment,
+                subtotal,
+                delivery,
+                total,
+                status: 'В обработке'
+            };
+            
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userIndex = users.findIndex(u => u.id === currentUser.id);
+            
+            if (userIndex !== -1) {
+                if (!users[userIndex].orders) {
+                    users[userIndex].orders = [];
+                }
+                users[userIndex].orders.unshift(order);
+                localStorage.setItem('users', JSON.stringify(users));
+                
+                const updatedUser = users[userIndex];
+                localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+            }
+            
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+            
+            orderModal.style.display = 'none';
+            
+            alert(`Заказ #${order.id} Предмет приобретен!`);
+        });
+
+        window.addEventListener('click', function(e) {
+            if (e.target === authModal) {
+                authModal.style.display = 'none';
+            }
+            if (e.target === orderModal) {
+                orderModal.style.display = 'none';
+            }
+            if (e.target === profileModal) {
+                profileModal.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
