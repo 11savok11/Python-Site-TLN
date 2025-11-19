@@ -388,7 +388,6 @@
             margin-top: 10px;
         }
         
-        /* Подвал */
         footer {
             background-color: #222;
             color: white;
@@ -585,8 +584,7 @@
         .order-details {
             color: #666;
         }
-        
-        /* Адаптивность */
+
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
@@ -658,7 +656,15 @@
 
     <section class="banner">
         <h2>The Longest Night</h2>
-        <p>Вас тут изнасилуют</p>
+        <p>    
+            The Longest Night - это сеть Dayz серверов где админ издевается над игроками.
+        </p>
+        <p>
+            Наш админ заботится о том чтобы игроки умирали и мучались.
+        </p>
+        <p>
+            Наша миссия - сделать максимальную жопа боль и джага-джага.
+        </p>
         <a href="#menu" class="btn">Магазин</a>
     </section>
 
@@ -666,13 +672,24 @@
         <h2 class="section-title">Магазин</h2>
         <div class="menu-grid">
             <div class="menu-item">
+                <img src="" alt="Ежедневный Кейс">
+                <div class="menu-item-content">
+                    <h3>Ежедневный Кейс</h3>
+                    <p>Треш-Лото</p>
+                    <div class="price">
+                        <span>0₽</span>
+                        <button class="btn add-to-cart" data-id="1" data-name="Ежедневный" data-price="0" data-image="">В корзину</button>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-item">
                 <img src="" alt="Кейс С Оружием">
                 <div class="menu-item-content">
-                    <h3>Кейс 1</h3>
-                    <p>Оружие</p>
+                    <h3>Кейс С Оружием</h3>
+                    <p>Без Пушки Как Без Рук...</p>
                     <div class="price">
                         <span>100₽</span>
-                        <button class="btn add-to-cart" data-id="1" data-name="Оружие" data-price="100" data-image="">В корзину</button>
+                        <button class="btn add-to-cart" data-id="2" data-name="Оружие" data-price="100" data-image="">В корзину</button>
                     </div>
                 </div>
             </div>
@@ -680,11 +697,11 @@
             <div class="menu-item">
                 <img src="" alt="Кейс С Броней">
                 <div class="menu-item-content">
-                    <h3>Кейс 2</h3>
-                    <p>Тут Нюдсы Админа</p>
+                    <h3>Кейс С Броней</h3>
+                    <p>Хороший Броник - Залог Защиты...</p>
                     <div class="price">
                         <span>100₽</span>
-                        <button class="btn add-to-cart" data-id="2" data-name="Броня" data-price="100" data-image="">В корзину</button>
+                        <button class="btn add-to-cart" data-id="3" data-name="Броня" data-price="100" data-image="">В корзину</button>
                     </div>
                 </div>
             </div>
@@ -692,11 +709,35 @@
             <div class="menu-item">
                 <img src="" alt="Кейс С Хламом">
                 <div class="menu-item-content">
-                    <h3>Кейс 3</h3>
-                    <p>Тут Нюдсы Савка</p>
+                    <h3>Кейс С Хламом</h3>
+                    <p></p>
                     <div class="price">
-                        <span>100₽</span>
-                        <button class="btn add-to-cart" data-id="3" data-name="Хлам" data-price="100" data-image="">В корзину</button>
+                        <span>50₽</span>
+                        <button class="btn add-to-cart" data-id="4" data-name="Хлам" data-price="50" data-image="">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="" alt="Восстановление Ключа">
+                <div class="menu-item-content">
+                    <h3>Восстановление Ключа</h3>
+                    <p>Потерял Ключ? Не Беда!</p>
+                    <div class="price">
+                        <span>50₽</span>
+                        <button class="btn add-to-cart" data-id="5" data-name="Восстановление Утраченного Ключа Машины" data-price="Сасай Кудасай Админу" data-image="">В корзину</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="" alt="Восстановление Машины">
+                <div class="menu-item-content">
+                    <h3>Восстановление Машины</h3>
+                    <p>Вернем Твою Тачку С Того Света...</p>
+                    <div class="price">
+                        <span>200₽</span>
+                        <button class="btn add-to-cart" data-id="6" data-name="Восстановление Машины" data-price="Сасай Кудасай Админу" data-image="">В корзину</button>
                     </div>
                 </div>
             </div>
@@ -718,13 +759,6 @@
         </div>
     </section>
 
-            </div>
-            <div class="about-content">
-                <h2>О Нашем Сервере</h2>
-                <p>The Longest Night - это сеть Dayz серверов где админ издевается над игроками.</p>
-                <p>Наш админ заботится о том чтобы игроки умирали и мучались.</p>
-                <p>Наша миссия - сделать максимальную жопа боль и джага-джага.</p>
-                <a href="#" class="btn" target="_blank">Узнать больше</a>
             </div>
         </div>
     </section>
@@ -1175,10 +1209,6 @@
             const comment = document.getElementById('order-comment').value;
             const payment = document.getElementById('order-payment').value;
             
-            const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-            const delivery = subtotal >= 1000 ? 0 : 200;
-            const total = subtotal + delivery;
-            
             const order = {
                 id: Date.now(),
                 date: new Date().toLocaleString(),
@@ -1228,8 +1258,5 @@
             }
         });
     </script>
-</body>
-</html>
-
 </body>
 </html>
